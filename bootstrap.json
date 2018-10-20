@@ -1,0 +1,35 @@
+[
+    {
+        "id":1,
+        "commonName":"Tomato",
+        "latinName":"Solanum lycopersicum",
+        "variety":"Black Prince",
+        "description":"Tasty black skin tomato",
+        "hardiness":9
+    },
+    {
+        "id":2,
+        "commonName":"Physalis",
+        "latinName":"Physalis peruviana",
+        "variety":"Peruvian",
+        "description":"Amizing flavour",
+        "hardiness":8
+    },
+    {
+        "id":3,
+        "commonName":"Zucchini",
+        "latinName":"Cucurbita pepo",
+        "variety":"Yellow /Golden",
+        "description":"Beautiful yellow skin",
+        "hardiness":8
+    },
+    {
+        "id":4,
+        "commonName":"Cucumber",
+        "latinName":"Cucumis sativus",
+        "variety":"Gergana",
+        "description":"Does not become bitter",
+        "hardiness":9
+    }
+
+]

@@ -1,0 +1,29 @@
+{
+  "name": "plants",
+  "version": "1.0.0",
+  "description": "Small garden plants database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vital",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-google-oauth20": "*",
+    "passport-linkedin": "*",
+    "passport-local": "*",
+    "passport-twitter": "*",
+    "popper": "*",
+    "pug": "*"
+  }
+}

@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h1 Edit plant
+    form(method="POST",action='/plants/edit/'+plant._id)
+        #form-group
+            lable Common name:
+            input.form-control(name="commonName",type="text", value=plant.commonName) 
+        #form-group
+            lable Latin name:
+            input.form-control(name="latinName",type="text", value=plant.latinName)
+        #form-group
+            lable Variety:
+            input.form-control(name="variety",type="text", value=plant.variety)
+        #form-group
+            lable Description:
+            textarea.form-control(name="description",type="text")=plant.description
+        #form-group
+            lable Hardiness:
+            input.form-control(name="hardiness",type="text", value=plant.hardiness)
+        br    
+        if currentUser        
+            input.btn.btn-primary.float-right(type="submit", value="submit")

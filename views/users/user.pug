@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    main(role='main')
+        .jumbotron
+            .col-sm-8.mx-auto
+                h1 #{user.username} (#{user.name})
+                h5 
+                    i #{user.email} 
+                br
+                a.btn.btn-primary(href='/users/edit/'+user._id) Edit
+                a.btn.btn-danger.float-right.delete-user(href='#',data-id=user._id) Delete
