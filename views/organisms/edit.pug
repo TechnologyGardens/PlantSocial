@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    h1 Edit organism
+    form(method="POST",action='/organisms/edit/'+organism._id)
+        #form-group
+            lable Common name(s):
+            each commonName, i in organism.commonNames
+                .row
+                    .col-sm-8
+                        input.form-control(name="commonNames["+i+"][name]",type="text", value=commonName.name) 
+                    .col-sm-4
+                        select.form-control(name="commonNames["+i+"][language]" data-placeholder='Choose a Language...')
+                            each language, l in languages
+                                option(value=language.code selected=(language.code == commonName.language.toUpperCase())) #{language.name}
+        #form-group
+            lable Latin name:
+            input.form-control(name="latinName",type="text", value=organism.latinName)
+        #form-group
+            lable Description:
+            textarea.form-control(name="description",type="text")=organism.description
+        br    
+        if currentUser        
+            input.btn.btn-primary.float-right(type="submit", value="submit")

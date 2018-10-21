@@ -1,26 +1,26 @@
 const utils = require('../utils.js');
-const Plants = require('../../models/plant');
+const Organisms = require('../../models/organism');
 
 module.exports = (req, resp) => {
     let isSearch = (req.query)&&(req.query.search);
-    function callback(err,plants) {
+    function callback(err,organisms) {
         if(err){
             console.log(err);
         } else{
-            let title = isSearch?'Search results for: '+req.query.search:'List of plants';
-            resp.render('plants/all',{
+            let title = isSearch?'Search results for: '+req.query.search:'List of plants and related organisms';
+            resp.render('organisms/all',{
                 title:title,
-                plants:plants
+                organisms:organisms
         });
         }
     }
     if (isSearch){
-        Plants.find(
+        Organisms.find(
             { $text : { $search : utils.escapeRegex(req.query.search) } }, 
             { score : { $meta: "textScore" } })
         .sort({ score : { $meta : 'textScore' } })
         .exec(callback);
     }
     else
-        Plants.find({},callback);
+        Organisms.find({},callback);
 };

@@ -1,35 +1,62 @@
 [
     {
         "id":1,
-        "commonName":"Tomato",
+        "commonNames":[
+            {"name":"Tomato","language":"en"},
+            {"name":"Домат","language":"bg"},
+            {"name":"Tomate","language":"fr"},
+            {"name":"Tomate","language":"de"},
+            {"name":"Tomate","language":"es"}
+            ],
         "latinName":"Solanum lycopersicum",
-        "variety":"Black Prince",
-        "description":"Tasty black skin tomato",
-        "hardiness":9
+        "description":"The tomato is the edible, often red, berry of the nightshade Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America. The Nahuatl (Aztec language) word tomatl gave rise to the Spanish word tomate, from which the English word tomato derived"
     },
     {
         "id":2,
-        "commonName":"Physalis",
+        "commonNames":[
+            {"name":"Physalis","language":"en"},
+            {"name":"Физалис","language":"bg"},
+            {"name":"Physalis","language":"fr"},
+            {"name":"Blasenkirschen","language":"de"},
+            {"name":"Physalis","language":"es"}
+            ],        
         "latinName":"Physalis peruviana",
-        "variety":"Peruvian",
-        "description":"Amizing flavour",
-        "hardiness":8
+        "description":"Physalis is a genus of flowering plants in the nightshade family (Solanaceae), which grow in warm temperate and subtropical regions of the world. Most of the species, of which there may be 75–90, are indigenous to the Americas."
     },
     {
         "id":3,
-        "commonName":"Zucchini",
+        "commonNames":[
+            {"name":"Zucchini","language":"en"},
+            {"name":"Courgette","language":"en"},
+            {"name":"Тиквичка","language":"bg"},
+            {"name":"Courgette","language":"fr"},
+            {"name":"Zucchini","language":"de"},
+            {"name":"Calabacín","language":"es"}
+            ],         
         "latinName":"Cucurbita pepo",
-        "variety":"Yellow /Golden",
-        "description":"Beautiful yellow skin",
-        "hardiness":8
+        "description":"The zucchini or courgette is a summer squash which can reach nearly 1 metre (100 cm; 39 in) in length, but is usually harvested when still immature at about 15 to 25 cm (6 to 10 in). A zucchini is a thin-skinned cultivar of what in Britain and Ireland is referred to as a marrow.In South Africa, a zucchini is known as a baby marrow"
     },
     {
         "id":4,
-        "commonName":"Cucumber",
+        "commonNames":[
+            {"name":"Cucumber","language":"en"},
+            {"name":"Краставица","language":"bg"},
+            {"name":"Concombre","language":"fr"},
+            {"name":"Gurke","language":"de"},
+            {"name":"Pepino","language":"es"}
+            ], 
         "latinName":"Cucumis sativus",
-        "variety":"Gergana",
-        "description":"Does not become bitter",
-        "hardiness":9
+        "description":"Cucumber (Cucumis sativus) is a widely cultivated plant in the gourd family, Cucurbitaceae. It is a creeping vine that bears cucumiform fruits that are used as vegetables. There are three main varieties of cucumber: slicing, pickling, and seedless. Within these varieties, several cultivars have been created. In North America, the term 'wild cucumber' refers to plants in the genera Echinocystis and Marah, but these are not closely related. The cucumber is originally from South Asia, but now grows on most continents. "
+    },
+    {
+        "id":5,
+        "commonNames":[
+            {"name":"Whitefly","language":"en"},
+            {"name":"Белокрилка","language":"bg"},
+            {"name":"Kohlmottenschildlaus","language":"de"},
+            {"name":"Aleyrodes proletella","language":"es"}
+            ], 
+        "latinName":"Aleyrodes proletella",
+        "description":"The Whitefly (Aleyrodes proletella) is a species of whitefly from the Aleyrodidae family. It has a global distribution. Adults, eggs and puppae Adult with eggs Adults are 1,5 mm in length. They have white wings with four gray spots. The wings are white due to a powdery wax. The head and thorax are dark, while the underside is yellow and also covered with a layer of wax. The eyes are red."
     }
-
 ]

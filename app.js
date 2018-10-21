@@ -25,7 +25,7 @@ const app = express();
 app.set('views', path.join(__dirname,'views'));
 app.set('view engine','pug');
 //Body parser middleware 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 //Set public folder
 app.use(express.static(path.join(__dirname,'public')));
@@ -52,7 +52,7 @@ app.use(validator());
 app.use('/',routes);
 
 
-console.log(`Plants version ${version}`);
+console.log(`PlantSocial version ${version}`);
 app.listen(port, ()=>{
     console.log(`Server started on port:${port}`);
 })

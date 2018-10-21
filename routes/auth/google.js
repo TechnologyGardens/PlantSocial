@@ -2,7 +2,7 @@ const passport = require('passport');
 
 module.exports = (req, resp, next) => {
     passport.authenticate('google',{
-        successRedirect:"/plants/",
+        successRedirect:"/organisms/",
         failureRedirect:"/auth/login",
         scope:['https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile'],
         failureFlash:true

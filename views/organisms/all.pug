@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    h1 #{title}
+    ul
+        each organism, p in organisms
+            li.list-group-item
+                a(href="/organisms/"+organism._id) #{organism.latinName} 
+                br
+                each commonName in organism.commonNames
+                    span #{commonName.name} (#{commonName.language}) 
+        if currentUser        
+            a(href="/organisms/add") 
+                li.list-group-item 
+                    input.btn.btn-primary.pull-right(type="button", value="Add new")

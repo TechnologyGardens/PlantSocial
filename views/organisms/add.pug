@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-    h1 Add new plant
-    form(method="POST",action='/plants/add')
+    h1 Add new organism
+    form(method="POST",action='/organisms/add')
         #form-group
             lable Common name:
             input.form-control(name="commonName",type="text")
@@ -10,13 +10,7 @@ block content
             lable Latin name:
             input.form-control(name="latinName",type="text")
         #form-group
-            lable Variety:
-            input.form-control(name="variety",type="text")
-        #form-group
             lable Description:
             textarea.form-control(name="description",type="text")
-        #form-group
-            lable Hardiness:
-            input.form-control(name="hardiness",type="text")
         br
         input.btn.btn-primary(type="submit", value="submit")

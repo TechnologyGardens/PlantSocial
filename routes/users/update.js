@@ -24,7 +24,7 @@ module.exports = (req, resp) => {
             }    
             else{
                 req.flash('success','User successfully updated');
-                resp.redirect('/plants');
+                resp.redirect('/organisms');
             }
         }))
     }

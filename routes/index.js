@@ -1,5 +1,5 @@
 const routes = require('express').Router();
-const plants = require('./plants');
+const organisms = require('./organisms');
 const users = require('./users');
 const auth=require('./auth');
 
@@ -10,13 +10,13 @@ routes.get('*', (req,resp,next)=>{
     next();
 })
 
-routes.use('/plants',plants);
+routes.use('/organisms',organisms);
 routes.use('/users',users);
 routes.use('/auth',auth);
 
 routes.get('/', (req, resp) => {
          resp.render('index', {
-          title:'Plants',
+          title:'PlantSocial',
           version: '1.0' 
         });
     });

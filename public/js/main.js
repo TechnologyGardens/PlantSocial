@@ -1,12 +1,12 @@
 $(document).ready(()=>{
-    $('.delete-plant').on('click',function(e){
-       const targetURL='/plants/'+$(this).data('id');
+    $('.delete-organism').on('click',function(e){
+       const targetURL='/organisms/'+$(this).data('id');
         $.ajax({
             type:'DELETE',
             url:targetURL,
             success: function(resp){
-                console.log('Delete Plant');
-                window.location.href='/plants/';
+                console.log('Delete Organism');
+                window.location.href='/organisms/';
             },
             error:function(err){
                 console.log(err);                
@@ -20,7 +20,7 @@ $(document).ready(()=>{
              url:targetURL,
              success: function(resp){
                  console.log('Delete User');
-                 window.location.href='/plants/';
+                 window.location.href='/organisms/';
              },
              error:function(err){
                  console.log(err);                

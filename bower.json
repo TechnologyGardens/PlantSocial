@@ -1,0 +1,17 @@
+{
+  "name": "plantsocial",
+  "version": "1.0.0",
+  "main": "public/js/main.js",
+  "directory": "public/bower_components",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap-social": "^5.1.1",
+    "bootstrap": "^4.1.3",
+    "font-awesome": "^5.4.1",
+    "jquery": "^3.3.1"
+  }
+}
