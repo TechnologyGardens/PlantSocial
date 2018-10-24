@@ -3,6 +3,6 @@ module.exports = function isAdmin(req, resp, next){
         return next();
     else {
         req.flash('danger', 'Insufficient privileges');
-        resp.redirect('/auth/login');
+        resp.status(403).redirect('/auth/login');
     }
 }

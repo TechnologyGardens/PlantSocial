@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const admin = require('../isAdmin');
-const auth = require('../checkAuth');
+const auth = require('../isAuthenticated');
 
 const all = require('./all');
 const register = require('./register');
@@ -13,12 +13,10 @@ const remove = require('./remove');
 router.get('/',admin, all);
 router.get('/register', register);
 router.post('/register', post);
-
-
 router.get('/:id',auth, view);
 router.delete('/:id',auth, remove);
 router.get('/edit/:id',auth,  edit);
-router.post('/update/:id',auth, update);
+router.put('/update/:id',auth, update);
 
 
 module.exports = router;

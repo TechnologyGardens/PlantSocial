@@ -1,5 +1,5 @@
 const Organisms = require('../../models/organism');
-const languages = require('../../languages.json');
+const languages = require('../../res/languages.json');
 
 
 module.exports = (req, resp) => {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const auth = require('../checkAuth');
+const auth = require('../isAuthenticated');
 const find = require('./find');
 const add = require('./add');
 const post = require('./post');
@@ -15,6 +15,6 @@ router.post('/add',auth, post);
 router.get('/:id', single);
 router.delete('/:id',auth, remove);
 router.get('/edit/:id', auth, edit);
-router.post('/edit/:id', auth, update);
+router.put('/edit/:id', auth, update);
 
 module.exports = router;

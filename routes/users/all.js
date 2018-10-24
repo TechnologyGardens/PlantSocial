@@ -1,4 +1,3 @@
-const data = require('../../bootstrap.json');
 const Users = require('../../models/user');
 
 

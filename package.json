@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "express",
+    "passport",
+    "swagger"
+  ],
   "author": "Vital",
   "license": "GPL-3.0",
   "dependencies": {
@@ -25,6 +30,7 @@
     "passport-local": "*",
     "passport-twitter": "*",
     "popper": "*",
-    "pug": "*"
+    "pug": "*",
+    "swagger-ui-express": "^4.0.1"
   }
 }

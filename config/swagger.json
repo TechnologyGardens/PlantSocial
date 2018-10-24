@@ -1,0 +1,518 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Plant Social is a small database which contains information about plant interactions. Some plants benefit from being planted in proximity to others, while some relationships are deteriorating. Contribute your experience so we can all know what to plant together\n[http://plantsocial.technologygardens.com](http://localhost:3000) \n",
+    "version" : "1.0.0",
+    "title" : "Plant Social",
+    "termsOfService" : "http://technologygardens.com/terms",
+    "contact" : {
+      "email" : "hristo.aladjov@technologygardens.com"
+    },
+    "license" : {
+      "name" : "GPL 3.0",
+      "url" : "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "organisms",
+    "description" : "Everything about Organisms",
+    "externalDocs" : {
+      "description" : "See examples at",
+      "url" : "http://localhost:3000/organisms"
+    }
+  }, {
+    "name" : "user",
+    "description" : "Operations about user"
+  } ],
+  "paths" : {
+    "/organisms" : {
+      "get" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Get all organisms or search by keyword",
+        "description" : "Provide search query parameter to filter by name or description",
+        "operationId" : "getOrganisms",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "search",
+          "in" : "query",
+          "description" : "Search by keyword in the name (latin and common) or the description",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Organism"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Add a new organism to the database",
+        "operationId" : "postOganism",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Organism object that needs to be added to the store",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Organism"
+          }
+        } ],
+        "responses" : {
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Update an existing organism or create new with specified id",
+        "operationId" : "putOrganism",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Organism object that needs to be updated/created",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Organism"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Organism not found"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      }
+    },
+    "/organisms/{id}" : {
+      "get" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Find organism by ID",
+        "description" : "Returns a single organism",
+        "operationId" : "getOrganismById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of organism",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Organism"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Organism not found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Updates a organism in the store with form data",
+        "operationId" : "updateOrganismWithForm",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of organism that needs to be updated",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "organisms" ],
+        "summary" : "Deletes a organism",
+        "operationId" : "deleteOrganism",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "api_key",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Organism id to delete",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Organism not found"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      }
+    },
+    "/users" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Get the list of all users",
+        "operationId" : "getUsers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Status values that need to be considered for filter",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "available", "pending", "sold" ],
+            "default" : "available"
+          },
+          "collectionFormat" : "multi"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Organism"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "Create user",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "createUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "users" ],
+        "summary" : "Update an existing user or create new with specified id",
+        "operationId" : "putUser",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "User object that needs to be updated/created",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Organism"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      }
+    },
+    "/users/{id}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Get user by its ID",
+        "operationId" : "getUserById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The Id of the user that needs to be fetched.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "400" : {
+            "description" : "Invalid username supplied"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "users" ],
+        "summary" : "Updated user",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "updateUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "the id that need to be updated",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid user id supplied"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "users" ],
+        "summary" : "Delete user",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "deleteUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The name that needs to be deleted",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Invalid user id supplied"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        },
+        "security" : [ {
+          "organismstore_auth" : [ "write:organisms", "read:organisms" ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "organismstore_auth" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "http://organismstore.swagger.io/oauth/dialog",
+      "flow" : "implicit",
+      "scopes" : {
+        "write:organisms" : "modify organisms in your account",
+        "read:organisms" : "read your organisms"
+      }
+    },
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Organism" : {
+      "type" : "object",
+      "required" : [ "latinName" ],
+      "properties" : {
+        "_id" : {
+          "type" : "string",
+          "example" : "5bceca46de3b585a54b8aa23"
+        },
+        "commonNames" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "required" : [ "name", "language" ],
+            "properties" : {
+              "name" : {
+                "type" : "string"
+              },
+              "language" : {
+                "type" : "string"
+              }
+            }
+          },
+          "example" : [ {
+            "name" : "Tomato",
+            "language" : "EN"
+          }, {
+            "name" : "Домат",
+            "language" : "BG"
+          }, {
+            "name" : "Tomate",
+            "language" : "FR"
+          }, {
+            "name" : "Tomate",
+            "language" : "DE"
+          }, {
+            "name" : "Tomate",
+            "language" : "ES"
+          } ]
+        },
+        "latinName" : {
+          "type" : "string",
+          "example" : "Solanum lycopersicum"
+        },
+        "description" : {
+          "type" : "string",
+          "example" : "The tomato is the edible, often red, berry of the nightshade Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America. The Nahuatl (Aztec language) word tomatl gave rise to the Spanish word tomate, from which the English word tomato derived"
+        }
+      },
+      "xml" : {
+        "name" : "Organism"
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "required" : [ "email", "username", "password" ],
+      "properties" : {
+        "_id" : {
+          "type" : "string",
+          "example" : "5bced88231cbce71ec0fb8f3"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Ivan Petrov"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "Valid unique e-mail address.",
+          "example" : "Ivan.Petrov@gmail.com",
+          "uniqueItems" : true
+        },
+        "username" : {
+          "type" : "string",
+          "description" : "can be specified from the user on registration and assigned to the e-mail when using authentication provider.",
+          "example" : "Ivan.Petrov@gmail.com"
+        },
+        "password" : {
+          "type" : "string",
+          "description" : "Encoded password"
+        },
+        "profileId" : {
+          "type" : "string",
+          "description" : "Used when the user is registered using external authentication provider"
+        },
+        "provider" : {
+          "type" : "string",
+          "description" : "Currently supported providers",
+          "enum" : [ "local", "google", "facebook", "twitter", "linkedin" ],
+          "default" : "local",
+          "example" : "local"
+        },
+        "isAdmin" : {
+          "type" : "boolean",
+          "default" : false,
+          "example" : false
+        }
+      },
+      "xml" : {
+        "name" : "User"
+      }
+    },
+    "ApiResponse" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "Find out more about Swagger",
+    "url" : "http://swagger.io"
+  },
+  "schemes" : [ "http" ],
+  "host" : "localhost:3000",
+  "basePath" : "/api/v1"
+}

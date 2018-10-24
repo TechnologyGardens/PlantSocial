@@ -1,11 +1,12 @@
-const GOOGLE_CLIENT_ID = '248309339406-9ut8ppfpv0mgnomhuk1tbjgu3gfcc8s9.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = 'C7uKRmF7Cpu3IvrGKw9P-KsD';
-const FACEBOOK_APP_ID = '317800725678899';
-const FACEBOOK_APP_SECRET = '5f2a212c8b553b350bba72f7c33f8ae8';
-const TWITTER_CONSUMER_KEY = 'Under review';
-const TWITTER_CONSUMER_SECRET = 'Under review';
-const LINKEDIN_API_KEY = '78kegyu1uy6c3z';
-const LINKEDIN_SECRET_KEY = 'EjBZSfpctnJQR9ju';
+//Load keys from environment variables
+const GOOGLE_CLIENT_ID = process.env.PLANTSOCIAL_GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.PLANTSOCIAL_GOOGLE_CLIENT_SECRET;
+const FACEBOOK_APP_ID = process.env.PLANTSOCIAL_FACEBOOK_APP_ID;
+const FACEBOOK_APP_SECRET = process.env.PLANTSOCIAL_FACEBOOK_APP_SECRET;
+const TWITTER_CONSUMER_KEY = process.env.PLANTSOCIAL_TWITTER_CONSUMER_KEY;
+const TWITTER_CONSUMER_SECRET = process.env.PLANTSOCIAL_TWITTER_CONSUMER_SECRET;
+const LINKEDIN_API_KEY = process.env.PLANTSOCIAL_LINKEDIN_API_KEY;
+const LINKEDIN_SECRET_KEY = process.env.PLANTSOCIAL_LINKEDIN_SECRET_KEY;
 
 const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -92,6 +93,7 @@ module.exports = (passport) => {
         consumerKey: TWITTER_CONSUMER_KEY,
         consumerSecret: TWITTER_CONSUMER_SECRET,
         callbackURL: "http://localhost:3000/auth/twitter/callback",
+        userProfileURL  : 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
         profileFields: ['id', 'name', 'emails', 'displayName']
       },findOrCreate
     ));

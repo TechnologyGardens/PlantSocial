@@ -8,6 +8,7 @@ const passport = require('passport');
 
 const routes = require('./routes');
 const dbconfig = require('./config/database');
+const SwaggerConfiguration = require('./config/swagger');
 
 const version = "1.0";
 const port = 3000;
@@ -49,6 +50,10 @@ app.use(function (req, res, next) {
 });
 //Express validator 
 app.use(validator());
+
+//Setup Swagger 
+SwaggerConfiguration.configureMiddleware(app);
+
 app.use('/',routes);
 
 
