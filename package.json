@@ -20,7 +20,7 @@
     "express": "*",
     "express-messages": "*",
     "express-session": "*",
-    "express-validator": "*",
+    "express-validator": "6.0.0",
     "mongoose": "*",
     "npm-check-updates": "^2.14.2",
     "passport": "*",
