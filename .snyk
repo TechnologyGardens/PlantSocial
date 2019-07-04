@@ -1,0 +1,32 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - pug > pug-filters > constantinople > babel-types > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - express-validator > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - npm-check-updates > node-alias > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - mongoose > async > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > wd > archiver > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > ngrok > request-promise-native > request-promise-core > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - npm-check-updates > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > wd > archiver > archiver-utils > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > wd > archiver > zip-stream > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > wd > archiver > async > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - pug > pug-code-gen > constantinople > babel-types > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
+        patched: '2019-07-04T03:28:41.454Z'
+    - popper > wd > archiver > zip-stream > archiver-utils > lodash:
+        patched: '2019-07-04T03:28:41.454Z'

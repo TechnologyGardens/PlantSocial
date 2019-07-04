@@ -4,7 +4,9 @@
   "description": "Small garden plant and related organisms database",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "express",
@@ -31,6 +33,8 @@
     "passport-twitter": "*",
     "popper": "*",
     "pug": "*",
-    "swagger-ui-express": "^4.0.1"
-  }
+    "swagger-ui-express": "^4.0.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
