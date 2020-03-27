@@ -21,7 +21,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
-    "mongoose": "*",
+    "mongoose": "5.3.9",
     "npm-check-updates": "^2.14.2",
     "passport": "*",
     "passport-facebook": "*",
