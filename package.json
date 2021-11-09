@@ -30,7 +30,7 @@
     "passport-local": "*",
     "passport-twitter": "*",
     "popper": "*",
-    "pug": "*",
+    "pug": "3.0.0",
     "swagger-ui-express": "^4.0.1"
   }
 }
