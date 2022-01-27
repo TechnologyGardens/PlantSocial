@@ -31,6 +31,6 @@
     "passport-twitter": "*",
     "popper": "*",
     "pug": "*",
-    "swagger-ui-express": "^4.0.1"
+    "swagger-ui-express": "^4.2.0"
   }
 }
