@@ -22,7 +22,7 @@
     "express-session": "*",
     "express-validator": "*",
     "mongoose": "*",
-    "npm-check-updates": "^2.14.2",
+    "npm-check-updates": "^7.0.0",
     "passport": "*",
     "passport-facebook": "*",
     "passport-google-oauth20": "*",
