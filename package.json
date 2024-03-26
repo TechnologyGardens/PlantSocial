@@ -17,7 +17,7 @@
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
-    "express": "*",
+    "express": "4.19.2",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
