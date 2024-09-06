@@ -20,9 +20,9 @@
     "express": "*",
     "express-messages": "*",
     "express-session": "*",
-    "express-validator": "*",
-    "mongoose": "*",
-    "npm-check-updates": "^2.14.2",
+    "express-validator": "6.10.1",
+    "mongoose": "5.7.3",
+    "npm-check-updates": "^17.0.0",
     "passport": "*",
     "passport-facebook": "*",
     "passport-google-oauth20": "*",
@@ -30,7 +30,7 @@
     "passport-local": "*",
     "passport-twitter": "*",
     "popper": "*",
-    "pug": "*",
+    "pug": "3.0.1",
     "swagger-ui-express": "^4.0.1"
   }
 }
